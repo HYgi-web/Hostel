@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APJ Hostel - DTU Hostel Management</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #3b82c4 0%, #2563aa 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82c4;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: #3b82c4;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+/* Navigation Styles */
+.nav {
+    background: rgba(74, 144, 226, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff, #e8f4fd);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-item:hover::before, .nav-item.active::before {
+    width: 100%;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.breadcrumb-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.breadcrumb a {
+    color: #4a90e2;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.breadcrumb span {
+    color: #666;
+    margin: 0 5px;
+}
+
+/* Hero Section */
+.hero {
+    
+    background: linear-gradient(135deg, rgba(151, 196, 248, 0.9), rgba(84, 119, 154, 0.9)), url('images/cvr.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: heroShine 4s ease-in-out infinite;
+}
+
+@keyframes heroShine {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 56px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    animation: heroTitleSlide 1.5s ease-out;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes heroTitleSlide {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hero p {
+    font-size: 22px;
+    margin-bottom: 40px;
+    opacity: 0.95;
+    animation: fadeInDelay 1.5s ease-out 0.5s both;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInDelay {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 0.95;
+        transform: translateY(0);
+    }
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: statFadeIn 1s ease-out;
+    animation-fill-mode: both;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.8s; }
+.stat-item:nth-child(2) { animation-delay: 1.0s; }
+.stat-item:nth-child(3) { animation-delay: 1.2s; }
+.stat-item:nth-child(4) { animation-delay: 1.4s; }
+
+@keyframes statFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.stat-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+    font-size: 42px;
+    font-weight: bold;
+    display: block;
+    background: linear-gradient(45deg, #ffffff, #e8f4fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: numberPulse 2s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.stat-label {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-top: 8px;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    animation: contentSlideUp 1s ease-out;
+}
+
+@keyframes contentSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-section {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: sectionFadeIn 0.8s ease-out forwards;
+}
+
+.content-section:nth-child(1) { animation-delay: 0.2s; }
+.content-section:nth-child(2) { animation-delay: 0.4s; }
+.content-section:nth-child(3) { animation-delay: 0.6s; }
+.content-section:nth-child(4) { animation-delay: 0.8s; }
+.content-section:nth-child(5) { animation-delay: 1.0s; }
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.1), transparent);
+    transition: left 0.8s;
+}
+
+.content-section:hover::before {
+    left: 100%;
+}
+
+.content-section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.2);
+}
+
+.content-section h2 {
+    color: #4a90e2;
+    font-size: 32px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #e8f4fd;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90e2, #357abd);
+    transition: width 0.8s ease;
+}
+
+.content-section:hover h2::after {
+    width: 100%;
+}
+
+.content-section h3 {
+    color: #333;
+    font-size: 24px;
+    margin: 30px 0 20px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.content-section h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 25px;
+    background: linear-gradient(180deg, #4a90e2, #357abd);
+    border-radius: 2px;
+}
+
+.content-section p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    transition: color 0.3s ease;
+}
+
+.content-section:hover p {
+    color: #555;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.amenity-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #4a90e2;
+}
+
+.amenity-item h4 {
+    color: #4a90e2;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.amenity-item p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.room-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.room-type {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #e8f4fd;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.room-type:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+}
+
+.room-type h4 {
+    color: #4a90e2;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.room-type .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-section h3 {
+    color: #4a90e2;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.contact-info {
+    list-style: none;
+}
+
+.contact-info li {
+    margin-bottom: 12px;
+    color: #666;
+}
+
+.contact-info strong {
+    color: #333;
+}
+
+.quick-links {
+    list-style: none;
+}
+
+.quick-links li {
+    margin-bottom: 10px;
+}
+
+.quick-links a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.quick-links a:hover {
+    color: #357abd;
+    text-decoration: underline;
+}
+
+.btn {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #357abd;
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-content {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-stats {
+        gap: 30px;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .room-types {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="images/logo.png" alt="DTU Logo" width="70px">
+            <div class="logo-text">
+                <h1>Hostel Management Department</h1>
+                <p>DELHI TECHNOLOGICAL UNIVERSITY</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</header>
+
+
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-content">
+    <a href="#" class="nav-item">Home</a>
+    <a href="#" class="nav-item">About</a>
+    <a href="#" class="nav-item">Fee Structure</a>
+    <a href="#" class="nav-item active">Boys Hostels</a>
+    <a href="#" class="nav-item">Girls Hostels</a>
+    <a href="#" class="nav-item">Complaints & Grievances</a>
+    <a href="#" class="nav-item">Important Information</a>
+    <a href="#" class="nav-item">Contact Us</a>
+    <a href="#" class="nav-item">Feedback</a>
+</div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+<div class="breadcrumb-content">
+    <a href="index.html">Home</a>
+    <span>></span>
+    <a href="index.html#hostels">Boys Hostels</a>
+    <span>></span>
+    <span>APJ Hostel</span>
+</div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+    <h1>Sir J.C. Bose Hostel</h1>
+    <p>Accommodation with excellent facilities for male students</p>
+    <div class="hero-stats">
+        <div class="stat-item">
+            <span class="stat-number">300</span>
+            <span class="stat-label">Total Capacity</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Floors</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">20XX</span>
+            <span class="stat-label">Established</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Security</span>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Main Content -->
+<div class="main-content">
+<div class="content-area">
+    <!-- About Section -->
+    <div class="content-section">
+        <h2>About Sir J.C. Bose Hostel</h2>
+        <p>Sir J.C. Bose Hostel is one of the most well-maintained hostels at Delhi Technological University. Named after India's renowned physicist Dr. C.V. Raman,known for his work in the field of light scattering , this hostel accomodates for than 300 future Engineers.</p>
+        
+        <p>Established in 20XX, the hostel walls holds the  memories and innovations of thosands of Engineers. The building is designed with energy-efficient systems and all efficient amenities to ensure the best living experience for our residents.</p>
+
+        <h3>Hostel Philosophy</h3>
+        <p>Following Sir J.C. Bose vision of nurturing young minds,Sir C.V. Raman creates an environment that promotes learning, innovation, and personal growth. We believe in providing not just accommodation, but a home away from home where students can thrive academically and personally.</p>
+    </div>
+
+    <!-- Room Types -->
+    <div class="content-section">
+        <h2>Room Types & Tariff</h2>
+        <div class="room-types">
+           
+            <div class="room-type">
+                <h4>Double Occupancy</h4>
+                <div class="price">₹58,000</div>
+                <p>Per Academic Year</p>
+                <p>• Shared bathroom<br>• Study area<br>• Personal storage space<br>• Double beds<br>• Study Tables</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amenities -->
+    <div class="content-section">
+        <h2>Facilities & Amenities</h2>
+        <div class="amenities-grid">
+            <div class="amenity-item">
+                <h4>High-Speed Internet</h4>
+                <p>24/7 Wi-Fi connectivity with fiber optic internet throughout the hostel</p>
+            </div>
+            <div class="amenity-item">
+                <h4>Mess & Canteen</h4>
+                <p>Nutritious meals with varied menu options and special dietary accommodations</p>
+            </div>
+            <div class="amenity-item">
+                <h4>Recreational Facilities</h4>
+                <p>Common rooms with TV, indoor games, and recreational activities</p>
+            </div>
+            <div class="amenity-item">
+                <h4>Laundry Service</h4>
+                <p>Modern washing machines and drying facilities available for residents at payment basis</p>
+            </div>
+            <div class="amenity-item">
+                <h4>Medical Facility</h4>
+                <p>First aid station in the campus and tie-up with nearby hospitals for medical emergencies</p>
+            </div>
+            <div class="amenity-item">
+                <h4>Security & Safety</h4>
+                <p>24/7 security, CCTV monitoring, and electronic access control systems</p>
+            </div>
+            <div class="amenity-item">
+                <h4>Parking</h4>
+                <p>Dedicated parking space for residents' bicycles </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rules & Regulations -->
+    <div class="content-section">
+        <h2>Hostel Rules & Guidelines</h2>
+        <h3>General Rules</h3>
+        <p>• All residents must maintain a valid student ID and hostel registration</p>
+        <p>• Entry and exit timings: Gates close at 11:00 PM and open at 5:00 AM</p>
+        <p>• Visitors are allowed only in designated areas during specified hours (9:00 AM - 8:00 PM)</p>
+        <p>• Consumption of alcohol and tobacco products is strictly prohibited</p>
+        <p>• Ragging in any form is a serious offense and will lead to immediate expulsion</p>
+
+        <h3>Room Guidelines</h3>
+        <p>• Keep rooms clean and well-maintained at all times</p>
+        <p>• No unauthorized electrical appliances allowed</p>
+        <p>• Room changing is permitted only with prior approval from hostel administration</p>
+        <p>• Damage to hostel property will result in penalty charges</p>
+
+        <h3>Academic Focus</h3>
+        <p>• Maintain noise levels conducive to studying, especially during examination periods</p>
+        <p>• Regular attendance in classes is mandatory</p>
+        <p>• Academic progress will be monitored and parents will be informed of any concerns</p>
+    </div>
+
+    <!-- Gallery -->
+    <div class="content-section">
+        <h2>Hostel Gallery</h2>
+        <div class="image-gallery">
+            <div class="gallery-item">
+                <img src="images/cvr.png" alt="Hostel Exterior">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/250/200" alt="Room Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/250/200" alt="Common Room">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/250/200" alt="Mess Hall">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/250/200" alt="Study Room">
+            </div>
+            <div class="gallery-item">
+                <img src="images/recretion.png" alt="Recreation Area">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- Contact Information -->
+    <div class="sidebar-section">
+        <h3>Contact Information</h3>
+        <ul class="contact-info">
+            <li><strong>Hostel Warden:</strong><br>Dr. XYZ<br>Mobile: +91-9876543210</li>
+            <li><strong>Assistant Warden:</strong><br>Mr. ABCD<br>Mobile: +91-9876543211</li>
+            <li><strong>Hostel Office:</strong><br>011-2778-1234</li>
+            <li><strong>Emergency:</strong><br>011-2778-9999</li>
+            <li><strong>Email:</strong><br>apj.hostel@dtu.ac.in</li>
+        </ul>
+        <a href="#" class="btn btn-full">Apply for Accommodation</a>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="sidebar-section">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+            <li><a href="#">Hostel Application Form</a></li>
+            <li><a href="#">Fee Payment Portal</a></li>
+            <li><a href="#">Mess Menu</a></li>
+            <li><a href="#">Hostel Rules & Regulations</a></li>
+            <li><a href="#">Room Allotment List</a></li>
+            <li><a href="#">Complaint Registration</a></li>
+            <li><a href="#">Hostel Committee</a></li>
+        </ul>
+    </div>
+
+    <!-- Important Updates -->
+    <div class="sidebar-section">
+        <h3>Important Updates</h3>
+        <div style="border-left: 4px solid #4a90e2; padding-left: 15px; margin-bottom: 15px;">
+            <p style="color: #666; font-size: 14px; margin-bottom: 5px;">March 15, 2025</p>
+            <p style="color: #333; font-weight: bold;">Room Allotment 2025-26</p>
+            <p style="color: #666; font-size: 14px;">Online applications for new academic year now open</p>
+        </div>
+        <div style="border-left: 4px solid #4a90e2; padding-left: 15px; margin-bottom: 15px;">
+            <p style="color: #666; font-size: 14px; margin-bottom: 5px;">March 10, 2025</p>
+            <p style="color: #333; font-weight: bold;">Hostel Maintenance</p>
+            <p style="color: #666; font-size: 14px;">Annual maintenance work scheduled for summer break</p>
+        </div>
+        <div style="border-left: 4px solid #4a90e2; padding-left: 15px;">
+            <p style="color: #666; font-size: 14px; margin-bottom: 5px;">March 5, 2025</p>
+            <p style="color: #333; font-weight: bold;">New Gym Equipment</p>
+            <p style="color: #666; font-size: 14px;">Modern fitness equipment installed in recreation area</p>
+        </div>
+    </div>
+
+    <!-- Emergency Numbers -->
+    <div class="sidebar-section">
+        <h3>Emergency Contacts</h3>
+        <ul class="contact-info">
+            <li><strong>Campus Security:</strong> 100</li>
+            <li><strong>Medical Emergency:</strong> 102</li>
+            <li><strong>Fire Emergency:</strong> 101</li>
+            <li><strong>Campus Ambulance:</strong> 108</li>
+            <li><strong>Hostel Night Watch:</strong> 111</li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+<p>&copy; 2025 Delhi Technological University - Hostel Management Department. All rights reserved.</p>
+</footer>
+</body>
+</html>
