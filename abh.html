@@ -196,7 +196,7 @@ body {
 /* Hero Section */
 .hero {
     
-    background: linear-gradient(135deg, rgba(151, 196, 248, 0.9), rgba(84, 119, 154, 0.9)), url('images/cvr.png');
+    background: linear-gradient(135deg, rgba(151, 196, 248, 0.9), rgba(84, 119, 154, 0.9)), url('images/abh.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -520,6 +520,40 @@ body {
     color: #333;
     margin: 10px 0;
 }
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #1f1fd7, #5b8ed6);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(197, 113, 222, 0.3);
+    animation: slideInUp 1s ease-out 0.6s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(156, 65, 236, 0.3), transparent);
+    transition: left 0.8s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
 
 /* Sidebar */
 .sidebar {
@@ -718,7 +752,7 @@ body {
     <p>Accommodation with excellent facilities for male students</p>
     <div class="hero-stats">
         <div class="stat-item">
-            <span class="stat-number">200</span>
+            <span class="stat-number">170</span>
             <span class="stat-label">Total Capacity</span>
         </div>
         <div class="stat-item">
@@ -726,7 +760,7 @@ body {
             <span class="stat-label">Floors</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number">20XX</span>
+            <span class="stat-number">2005</span>
             <span class="stat-label">Established</span>
         </div>
         <div class="stat-item">
@@ -743,12 +777,12 @@ body {
     <!-- About Section -->
     <div class="content-section">
         <h2>About ABH Hostel</h2>
-        <p>Aryabhatta Hostel welcomes more than 200 freshers and gets the honour to becomes their first accomodation. The Hostel is located near the Main gate of DTU to ensure most comfortable welcome to the freshers </p>
+        <p>Aryabhatta Hostel welcomes about 170 freshers every year and gets the honour to become their first accomodation. The Hostel is located near the Main gate of DTU campus to ensure hassle free welcome to the freshers.</p>
         
-        <p>Established in 20XX, the hostel walls holds the  memories and innovations of thosands of Engineers. The building is designed with energy-efficient systems and all efficient amenities to ensure the best living experience for our residents.</p>
+        <p>Aryabhatta Hostel running in Type-I staff flats and has capacity to accommodate about 170 students.</p>
 
         <h3>Hostel Philosophy</h3>
-        <p>The Hostel is located near the main gate to ensure a comfortable stay for the residents.Being far away from all other hostels it promises a ragging free environment for all the students.</p>
+        <p>Named after Aryabhatta, this hostel is meant to welcome new geniuses to the college. Being far away from all senior hostels it promises a ragging free environment for all the students.</p>
     </div>
 
     <!-- Room Types -->
@@ -758,9 +792,9 @@ body {
            
             <div class="room-type">
                 <h4>1-BHK Flats </h4>
-                <div class="price">₹56,000</div>
+                <div class="price">₹52,000</div>
                 <p>Per Academic Year</p>
-                <p>•Personal bathroom for each flat<br>• Each flat has 3 Students(2+1)<br>• Personal Almirah<br>• Beds (2+1)<br>• Study Tables</p>
+                <p>•Personal bathroom for each flat<br>• Each flat has 3 Students(2+1)<br>• Personal Almirah<br>• Beds (2+1)<br>• Study Tables and Chair</p>
             </div>
         </div>
     </div>
@@ -797,29 +831,31 @@ body {
                 <h4>Parking</h4>
                 <p>Dedicated parking space for residents' bicycles </p>
             </div>
+            <div class="amenity-item">
+                <h4>Vending Machine</h4>
+                <p>A Vending machine to meet the snacking meets of students</p>
+            </div>
         </div>
     </div>
 
     <!-- Rules & Regulations -->
     <div class="content-section">
-        <h2>Hostel Rules & Guidelines</h2>
-        <h3>General Rules</h3>
-        <p>• All residents must maintain a valid student ID and hostel registration</p>
-        <p>• Entry and exit timings: Gates close at 11:00 PM and open at 5:00 AM</p>
-        <p>• Visitors are allowed only in designated areas during specified hours (9:00 AM - 8:00 PM)</p>
-        <p>• Consumption of alcohol and tobacco products is strictly prohibited</p>
-        <p>• Ragging in any form is a serious offense and will lead to immediate expulsion</p>
-
-        <h3>Room Guidelines</h3>
-        <p>• Keep rooms clean and well-maintained at all times</p>
-        <p>• No unauthorized electrical appliances allowed</p>
-        <p>• Room changing is permitted only with prior approval from hostel administration</p>
-        <p>• Damage to hostel property will result in penalty charges</p>
-
-        <h3>Academic Focus</h3>
-        <p>• Maintain noise levels conducive to studying, especially during examination periods</p>
-        <p>• Regular attendance in classes is mandatory</p>
-        <p>• Academic progress will be monitored and parents will be informed of any concerns</p>
+        <h2>General Rules & Regulations for hostel residents</h2>
+        <p>• No hostel resident can keep any motorized vehicle in the University. However bicycles are permitted for local transport. Disciplinary action, including fine will be imposed on the defaulters.</p>
+        <p>• Ragging is strictly prohibited inside as well as outside the Hostels/Campus. If anyone is found involved in ragging he/she may be taken up as per Hon'ble Supreme Court orders. Fresher should promptly report to the Warden or Officer-In-charge (Hostel Office)/Chietor any other competent authority if ragged.</p>
+        <p>• Any act of intimidation or vicience, willful damage to property or drunken and riotous behavior constitutes an offence. If anybody is found to do so, they will be expelled from hostel without serving any notice in this negard and disciplinary action shall be taken.</p>
+        <p>• Use of narcotica, consumption of alcoholic beverages and gambling are strictly prohibited and disciplinary action shall be taken.</p>
+        <p>• Smoking is strictly prohibited inside hostal/University campus. Any student found smoking/in possession of smoking items shall be penalized for indiscipline as well as causing a possible fire hazard.</p>
+        <p>• Videography is prohibited inside hostel premises. Any student is found indulging in such activity, necessary disciplinary action will be taken.</p>
+        <p>• Misbehavior or Indulging in a with staff members/security staff will be treated as an offence and will be liable for expulsion from the hostel.</p>
+        <p>• Hostel inmates shall be required to enter their names into the register before leaving the campus and seek written permission from their hostel Wardens before leaving the hostel for a long leave.</p>
+        <p>• Boys Hostel inmates shall not be allowed to leave/enter the hostel after 11 p.m. in event of anyone reporting late, necessary disciplinary action will be taken against them.</p>
+        <p>• ⁠All the hostellers are required to sign their attendance daily on attendance register. The attendance register is available with the Hostel Attendants If someone talls to sign their attendance consecutively for seven days without permission of their Warden, their accommodation will be cancelled without any nобов.</p>
+        <p>• No female member is permitted to visit the room of the boys' hostel. However, the visitors permitted to see their wards in the visitor's room only</p>
+        <p>• No day-scholar any other other person person i is permitted to stay in the hostet after 9:00 pm., otherwise suitable disciplinary action will be taken. However, if anyone want to meat students living in hoste ving in hostel should take necessary permission from the warden.</p>
+        <p>• ⁠The students residing in various hostets are permitted to use wlectric pes tem, only after taking prior permission from nespective wand appliances are not permitted. and kettle for their personal use on the payment of Rs. 100/- per month charge/Chief Warden. However, use of room heaters and other electrical. </p>
+        <a href="#" class="cta-button">View all Hostel Rules</a>
+        
     </div>
 
     <!-- Gallery -->
@@ -827,7 +863,7 @@ body {
         <h2>Hostel Gallery</h2>
         <div class="image-gallery">
             <div class="gallery-item">
-                <img src="images/cvr.png" alt="Hostel Exterior">
+                <img src="images/abh.png" alt="Hostel Exterior">
             </div>
             <div class="gallery-item">
                 <img src="/api/placeholder/250/200" alt="Room Interior">
@@ -854,20 +890,20 @@ body {
     <div class="sidebar-section">
         <h3>Contact Information</h3>
         <ul class="contact-info">
-            <li><strong>Hostel Warden:</strong><br>Dr. Sanjay Kumar<br>Mobile: +91-9876543210</li>
+            <li><strong>Hostel Warden:</strong><br>Dr. Sanjay Kumar<br>Mobile: +91-98XXXXXXXX</li>
             <li><strong>Assistant Warden:</strong><br>Mr. ABCD<br>Mobile: +91-9876543211</li>
             <li><strong>Hostel Office:</strong><br>011-2778-1234</li>
             <li><strong>Emergency:</strong><br>011-2778-9999</li>
             <li><strong>Email:</strong><br>sanjaykumar@dtu.ac.in</li>
         </ul>
-        <a href="#" class="btn btn-full">Apply for Accommodation</a>
+        <a href="https://saarthi.dtu.ac.in/hostel/hostel_prod_2025/hostel_registration/index_old.php" class="btn btn-full">Apply for Accommodation</a>
     </div>
 
     <!-- Quick Links -->
     <div class="sidebar-section">
         <h3>Quick Links</h3>
         <ul class="quick-links">
-            <li><a href="#">Hostel Application Form</a></li>
+            <li><a href="https://saarthi.dtu.ac.in/hostel/hostel_prod_2025/hostel_registration/index_old.php">Hostel Application Form</a></li>
             <li><a href="#">Fee Payment Portal</a></li>
             <li><a href="#">Mess Menu</a></li>
             <li><a href="#">Hostel Rules & Regulations</a></li>

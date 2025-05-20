@@ -520,6 +520,41 @@ body {
     color: #333;
     margin: 10px 0;
 }
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #1f1fd7, #5b8ed6);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(197, 113, 222, 0.3);
+    animation: slideInUp 1s ease-out 0.6s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(156, 65, 236, 0.3), transparent);
+    transition: left 0.8s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
 
 /* Sidebar */
 .sidebar {
@@ -718,7 +753,7 @@ body {
     <p>Modern accommodation with excellent facilities for male students</p>
     <div class="hero-stats">
         <div class="stat-item">
-            <span class="stat-number">950</span>
+            <span class="stat-number">301</span>
             <span class="stat-label">Total Capacity</span>
         </div>
         <div class="stat-item">
@@ -758,7 +793,7 @@ body {
            
             <div class="room-type">
                 <h4>Triple Occupancy</h4>
-                <div class="price">₹75,000</div>
+                <div class="price">₹72,000</div>
                 <p>Per Academic Year</p>
                 <p>• Shared bathroom<br>• Study area<br>• Personal storage space<br>• Triple beds<br>• AC rooms</p>
             </div>
@@ -858,20 +893,20 @@ body {
     <div class="sidebar-section">
         <h3>Contact Information</h3>
         <ul class="contact-info">
-            <li><strong>Hostel Warden:</strong><br>Dr. Deshraj Meena<br>Mobile: +91-9876543210</li>
+            <li><strong>Hostel Warden:</strong><br>Dr. Deshraj Meena<br>Mobile: +91-987XXXXXXX</li>
             <li><strong>Assistant Warden:</strong><br>Mr. ABCD<br>Mobile: +91-9876543211</li>
             <li><strong>Hostel Office:</strong><br>011-2778-1234</li>
             <li><strong>Emergency:</strong><br>011-2778-9999</li>
             <li><strong>Email:</strong><br>deshrajmeena@dtu.ac.in</li>
         </ul>
-        <a href="#" class="btn btn-full">Apply for Accommodation</a>
+        <a href="https://saarthi.dtu.ac.in/hostel/hostel_prod_2025/hostel_registration/index_old.php" class="btn btn-full">Apply for Accommodation</a>
     </div>
 
     <!-- Quick Links -->
     <div class="sidebar-section">
         <h3>Quick Links</h3>
         <ul class="quick-links">
-            <li><a href="#">Hostel Application Form</a></li>
+            <li><a href="https://saarthi.dtu.ac.in/hostel/hostel_prod_2025/hostel_registration/index_old.php">Hostel Application Form</a></li>
             <li><a href="#">Fee Payment Portal</a></li>
             <li><a href="#">Mess Menu</a></li>
             <li><a href="#">Hostel Rules & Regulations</a></li>
