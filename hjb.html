@@ -855,6 +855,164 @@ body {
     display: inline-block;
     font-weight: 500;
 }
+
+warden-card {
+    background: linear-gradient(135deg, #2197f2, #3b82c4 100%);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(108, 155, 209, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.warden-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.warden-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.warden-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.warden-photo .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.warden-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.warden-title {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.warden-contact {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.phone-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Student Council Grid */
+.council-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.council-member {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid #f0f4f8;
+    transition: all 0.3s ease;
+}
+
+.council-member:hover {
+    border-color: #6c9bd1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 155, 209, 0.15);
+}
+
+.member-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #e8f0fe;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.member-photo .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6c9bd1, #8b5fbf);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.member-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.member-post {
+    font-size: 0.85rem;
+    color: white;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    padding: 4px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    font-weight: 500;
+}
 </style>
 </head>
 <body>
@@ -1122,7 +1280,7 @@ body {
                     <div class="photo-placeholder">AB</div>
                 </div>
                 <div class="member-name">AB</div>
-                <div class="member-post">Presidents</div>
+                <div class="member-post">President</div>
             </div>
 
             <div class="council-member">
