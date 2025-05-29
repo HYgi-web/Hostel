@@ -899,6 +899,27 @@
             font-size: 0.9rem;
             color: #bbb;
         }
+
+        .update-sticker {
+            font-size: 1.5rem;
+            display: inline-block;
+            background-color: #007bff; /* blue */
+            color: white;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            margin-left: 10px;
+            animation: pulse 1.5s infinite;
+          }
+      
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+          }
     </style>
 </head>
 <body>
@@ -1036,21 +1057,22 @@
 
             <!-- Sidebar -->
             <aside class="sidebar">
-                <div class="search-section" id="search-section">
-                    <h3>Search</h3>
-                    <input type="search" class="search-box" placeholder="Search...">
-                    <button class="search-button">Go</button>
-                </div>
+                <div class="update-sticker">Updates</div>
                 <br>
-                <div class="recent-posts" id="recent-posts">
+                <br>
+                <div class="recent-posts" id="search-section">
                     <h2>Recent Posts</h2>
                     <div class="post-item">
-                        <a href="https://saarthi.dtu.ac.in/hostel/hostel_prod_2025/hostel_registration/index_old.php">Hostel Registration Forms for the Academic Year 2025-26</a>
+                        <a href="https://saarthi.dtu.ac.in/hostel/hostel_prod_2025/hostel_registration/index_old.php">Hostel Registration Forms for the Academic Year 2025-26  🆕</a>
                         <div class="post-date">May 15, 2025</div>
                     </div>
                     <div class="post-item">
-                        <a href="https://forms.gle/MwMNX4FhqpkhKeus8">Application for mess fee refund for the session 2024-25</a>
-                        <div class="post-date">July 31, 2024</div>
+                        <a href="https://forms.gle/MwMNX4FhqpkhKeus8">Application for mess fee refund for the session 2024-25  🆕</a>
+                        <div class="post-date">May 15, 2025</div>
+                    </div>
+                    <div class="post-item">
+                        <a href="#">Room surrender form-to be summited in the warden office of respective hostel  🆕</a>
+                        <div class="post-date">May 07, 2025</div>
                     </div>
                     <div class="post-item">
                         <a href="#">Provisional Hostel allotment of 2K24 M.Tech/MBA/MSC/MDes Male and Female and Ph.D Female students</a>
