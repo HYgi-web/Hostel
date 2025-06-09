@@ -399,11 +399,27 @@
         }
 
         /* Facilities Grid */
-        .facilities-grid {
+       
+
+       .facilities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Fixed to 3 columns */
             gap: 2rem;
             margin-top: 3rem;
+            margin-left: 10rem;
+            margin-right: 10rem;
+        }
+
+        @media (max-width: 900px) {
+            .facilities-grid {
+                grid-template-columns: repeat(2, 1fr); /* Show 2 cards per row on tablets */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .facilities-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
         }
 
         .facility-card {
@@ -501,45 +517,37 @@
             top: 100px;
         }
 
-        .search-box {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #3b82c4;
-            box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.1);
-            background: white;
-        }
-
-        .search-button {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(45deg, #3b82c4, #2563aa);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .search-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(59, 130, 196, 0.4);
-        }
-
         .recent-posts {
             margin-top: 2rem;
+            max-height: 45rem; /* Set your desired height */
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            position: relative; /* Required for sticky to work properly */
         }
-
+        
+        .recent-posts h2 {
+            position: sticky;
+            top: 0;
+            background: white; /* Same as sidebar background to avoid overlap */
+            z-index: 1;
+            padding: 0.5rem 0;
+        }
+        
+        
+        /* Optional: Custom scrollbar styling (WebKit browsers only) */
+        .recent-posts::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .recent-posts::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+        }
+        
+        .recent-posts::-webkit-scrollbar-thumb:hover {
+            background-color: #94a3b8;
+        }
+        
         .recent-posts h2 {
             color: #3b82c4;
             margin-bottom: 1rem;
@@ -570,7 +578,41 @@
             font-size: 0.9rem;
             margin-top: 0.5rem;
         }
-
+        .form-posts {
+            margin-top: 2rem;
+            max-height: 20rem; /* Set your desired height */
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            position: relative; /* Required for sticky to work properly */
+        }
+        
+        .form-posts h2 {
+            position: sticky;
+            top: 0;
+            background: white; /* Same as sidebar background to avoid overlap */
+            z-index: 1;
+            padding: 0.5rem 0;
+            color: #3b82c4;
+            margin-bottom: 1rem;
+        }
+        
+        
+        /* Optional: Custom scrollbar styling (WebKit browsers only) */
+        .form-posts::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .form-posts::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+        }
+        
+        .form-posts::-webkit-scrollbar-thumb:hover {
+            background-color: #94a3b8;
+        }
+        .form-posts{
+            margin-top: 3.5rem;
+        }
         /* Two Column Layout */
         .two-column {
             display: grid;
@@ -651,8 +693,8 @@
             text-decoration: none;
         }
 
-            /*CAROUSEL STYLING*/
-        .carousel-title{
+          /*HOSTEL AUTHORITIES*/
+          .carousel-title{
             text-align: center;
             font-size: 2.5rem;
             color: #0d47a1;
@@ -670,165 +712,79 @@
             background-color:#f44336;
         
         }
-        .carousel-container {
-            margin: auto;
-            margin-bottom: 30px;
-            max-width: 800px;
-            width: 100%;
-            background-color: #f0f4f8;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+
+          .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            margin-left: 10rem;
+            margin-right: 10rem;
         }
-        
-        
-        
-        .carousel-header h2 {
-            color: #1e3a8a;
-            font-size: 28px;
-            font-weight: 700;
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-        
-        .carousel {
-            position: relative;
-            width: 100%;
-            padding: 0 20px 20px;
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
-        
-        .slides {
-            position: relative;
-            overflow: hidden;
-            height: 240px;
-        }
-        
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
-        
-        .slide-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        @media (min-width: 640px) {
-            .slide-content {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-        
-        .authority-image {
+
+       
+
+        .photo-placeholder img{
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid #2563eb;
-            object-fit: cover;
-            margin: 0 auto;
-        }
-        
-        .authority-info {
-            flex: 1;
-        }
-        
-        .authority-name {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-        }
-        
-        .authority-position {
-            font-size: 14px;
-            font-weight: 500;
-            color: #2563eb;
-            margin-bottom: 15px;
-        }
-        
-        .authority-message {
-            background-color: #ebf3ff;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid #2563eb;
-            font-style: italic;
-            color: #4b5563;
-        }
-        
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            z-index: 2;
-        }
-        
-        .carousel-button {
-            background-color: rgba(255, 255, 255, 0.7);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s;
-        }
-        
-        .carousel-button:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .carousel-button svg {
-            width: 24px;
-            height: 24px;
-            fill: #4b5563;
-        }
-        
-        .carousel-button:hover svg {
-            fill: #2563eb;
-        }
-        
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .indicator {
-            width: 12px;
-            height: 12px;
-            background-color: #d1d5db;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .indicator.active {
-            background-color: #2563eb;
+            color: white;
+            font-size: 48px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
+        .contact-info h3 {
+            color: #4a7ba7;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .contact-info .title {
+            display: block;
+            color: #666;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+           
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        .contact-details li::before {
+            content: "📧";
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+            /*FOOTER*/
         footer {
             background-color:  #212121;
             color: white;
@@ -924,12 +880,12 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-content">
-            <a href="index.html" class="nav-item">Home</a>
+            <a href="index.html" class="nav-item active">Home</a>
             <a href="about.html" class="nav-item">About</a>
             <a href="fee.html" class="nav-item">Fee Structure</a>
             <a href="#hostels" class="nav-item">Boys Hostels</a>
             <a href="#hostels" class="nav-item">Girls Hostels</a>
-            <a href="https://forms.gle/8wHB6hdZtZiCrMVp6" class="nav-item">Complaints & Grievances</a>
+            <a href="complain.html" class="nav-item">Complaints & Grievances</a>
             <a href="#search-section" class="nav-item">Important Updates</a>
             <a href="contact.html" class="nav-item">Contact Us</a>
             
@@ -981,7 +937,8 @@
                             <ol class="hostel-list">
                                 <li><a href="snh.html">Sister Nivediata Hostel</a></li>
                                 <li><a href="kch.html">Kalpana Chawla Hostel</a></li>
-                                <li><a href="vlb.html">Virangana Lakshmibai Hostel, Block-1&2 (AC)</a></li>
+                                <li><a href="vlb.html">Virangana Lakshmibai Hostel, Block-1 (AC)</a></li>
+                                <li><a href="vlb.html">Virangana Lakshmibai Hostel, Block-2 (AC)</a></li>
                             </ol>
                         </div>
                     </div>
@@ -995,45 +952,7 @@
                     </div>
                 </section>
 
-                <!-- Facilities Section -->
-                <section class="section fade-in" id="facilities">
-                    <h2 class="section-title">Hostel Facilities</h2>
-                    
-                    <div class="facilities-grid">
-                        <div class="facility-card">
-                            <div class="facility-image" style="background-image: url(images/accomodation.png);"></div>
-                            <div class="facility-content">
-                                <h3><i class="fas fa-bed"></i> Quality Accommodation</h3>
-                                <p>Well-furnished rooms with essential amenities to ensure comfortable living for all students.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="facility-card">
-                            <div class="facility-image" style="background-image: url(images/mess.png);"></div>
-                            <div class="facility-content">
-                                <h3><i class="fas fa-utensils"></i> Dining Facilities</h3>
-                                <p>Hygienic mess services offering nutritious meals along with special menu on festivals.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="facility-card">
-                            <div class="facility-image" style="background-image: url(images/recretion.png);"></div>
-                            <div class="facility-content">
-                                <h3><i class="fas fa-gamepad"></i> Recreation & Sports</h3>
-                                <p>Common room with recreational facilities and indoor games for student entertainment.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="facility-card">
-                            <div class="facility-image" style="background-image: url(images/gym.png);"></div>
-                            <div class="facility-content">
-                                <h3><i class="fas fa-dumbbell"></i> Gymnasium</h3>
-                                <p>Well-equipped gymnasium facilities available in every hostel for fitness enthusiasts.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            </div>   
 
             <!-- Sidebar -->
             <aside class="sidebar">
@@ -1065,99 +984,105 @@
                         <div class="post-date">July 25, 2024</div>
                     </div>
                 </div>
+
+                <div class="form-posts" >
+                    <h2>Important forms</h2>
+                    <div class="post-item">
+                        <a href="#">Room Surrender Form  🆕</a>
+                        <div class="post-date">June 09, 2025</div>
+                    </div>
+                    <div class="post-item">
+                        <a href="#">Mess Fee Refund Form  🆕</a>
+                        <div class="post-date">June 09, 2025</div>
+                    </div>
+                    <div class="post-item">
+                        <a href="#">Guest Accommodation Form 🆕</a>
+                        <div class="post-date">June 09, 2025</div>
+                    </div>
+                    
+                </div>
             </aside>
         </div>
     </main>
+    <!-- HOSTEL Facilities -->
+    <section class="section fade-in align" id="facilities">
+        <h2 class="section-title">Hostel Facilities</h2>
+        
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="facility-image" style="background-image: url(images/accomodation.png);"></div>
+                <div class="facility-content">
+                    <h3><i class="fas fa-bed"></i> Quality Accommodation</h3>
+                    <p>Well-furnished rooms with essential amenities to ensure comfortable living for all students.</p>
+                </div>
+            </div>
+            
+            <div class="facility-card">
+                <div class="facility-image" style="background-image: url(images/mess.png);"></div>
+                <div class="facility-content">
+                    <h3><i class="fas fa-utensils"></i> Dining Facilities</h3>
+                    <p>Hygienic mess services offering nutritious meals along with special menu on festivals.</p>
+                </div>
+            </div>
+            
+            <div class="facility-card">
+                <div class="facility-image" style="background-image: url(images/recretion.png);"></div>
+                <div class="facility-content">
+                    <h3><i class="fas fa-gamepad"></i> Recreation & Sports</h3>
+                    <p>Common room with recreational facilities and indoor games for student entertainment.</p>
+                </div>
+            </div>
+            
+            <div class="facility-card">
+                <div class="facility-image" style="background-image: url(images/gym.png);"></div>
+                <div class="facility-content">
+                    <h3><i class="fas fa-dumbbell"></i> Gymnasium</h3>
+                    <p>Well-equipped gymnasium facilities available in every hostel for fitness enthusiasts.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <div class="facility-image" style="background-image: url(images/VLBstudy.jpg);"></div>
+                <div class="facility-content">
+                    <h3><i class="fas fa-book-reader"></i> Study Room</h3>
+                    <p>Quiet and well-lit study rooms in each hostel block to support focused learning and group study sessions.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
     <!-- HOSTEL AUTHORITIS -->
     <h2 class="carousel-title">Hostel Authorities</h2>
-    <div class="carousel-container">
-        
-        <div class="carousel">
-            <div class="slides">
-                <!-- Slide 1 -->
-                <div class="slide active" data-index="0">
-                    <div class="slide-content">
-                        <img src="images/rksingh.png" alt="Prof. R.K. SIngh" class="authority-image">
-                        <div class="authority-info">
-                            <h3 class="authority-name">Prof. Raj Kumar Singh</h3>
-                            <p class="authority-position">Chief Warden</p>
-                            <div class="authority-message">
-                                I extend my hearty welcome to all the entrants in the University hostels. I wish them a 
-                                happy and healthy campus life and I wish that they make their great careers for themselves
-                                in the university hostels and be worthy to serve the country.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="slide" data-index="1">
-                    <div class="slide-content">
-                        <img src="images/sp.png" alt="Prof. Sanjay Patidar" class="authority-image">
-                        <div class="authority-info">
-                            <h3 class="authority-name">Dr. Sanjay Patidar</h3>
-                            <p class="authority-position">Hostel OIC</p>
-                            <div class="authority-message">
-                                We are trying to make a healthy and innovative environment for the residents of hostel.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="slide" data-index="2">
-                    <div class="slide-content">
-                        <img src="/api/placeholder/150/150" alt="Mr.Deepak" class="authority-image">
-                        <div class="authority-info">
-                            <h3 class="authority-name">Mr.Deepak</h3>
-                            <p class="authority-position">Stenographer Hostel office</p>
-                            <div class="authority-message">
-                                We are trying to make a healthy and innovative environment for the residents of hostel.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="slide" data-index="3">
-                    <div class="slide-content">
-                        <img src="/api/placeholder/150/150" alt="Mr. Maninder" class="authority-image">
-                        <div class="authority-info">
-                            <h3 class="authority-name">Mr. Maninder</h3>
-                            <p class="authority-position">Attendant Supervisor</p>
-                            <div class="authority-message">
-                                We are trying to make a healthy and innovative environment for the residents of hostel.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="photo-placeholder">
+                <img src="images/rksingh.png">
             </div>
-            
-            <!-- Navigation buttons -->
-            <div class="carousel-nav">
-                <button class="carousel-button prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-                    </svg>
-                </button>
-                <button class="carousel-button next">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </button>
+            <div class="contact-info">
+                <h3>Prof Raj Kumar Singh</h3>
+                <p class="title">Chief Warden</p>
+                <ul class="contact-details">
+                    <li>rajkumarsingh@dce.ac.in</li>
+                    <li>Room No. XXX, Hostel Office</li>
+                </ul>
             </div>
-            
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                <div class="indicator active" data-index="0"></div>
-                <div class="indicator" data-index="1"></div>
-                <div class="indicator" data-index="2"></div>
-                <div class="indicator" data-index="3"></div>
+        </div>
+
+        <div class="contact-card">
+            <div class="photo-placeholder">
+                <img src="images/sp.png">
+            </div>
+            <div class="contact-info">
+                <h3>Dr. Sanjay Patidar</h3>
+                <p class="title">Hostel Officer-in-Charge (OIC)</p>
+                <ul class="contact-details">
+                    <li>sanjaypatidar@dtu.ac.in</li>
+                    <li>Room No. XXX, Hostel Office</li>
+                </ul>
             </div>
         </div>
     </div>
-    </div>
-
     
     
     <!-- Footer -->
@@ -1277,67 +1202,7 @@
         // Create particles periodically
         setInterval(createParticle, 2000);
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            const indicators = document.querySelectorAll('.indicator');
-            const prevButton = document.querySelector('.prev');
-            const nextButton = document.querySelector('.next');
-            let currentIndex = 0;
-            let interval;
-            
-            // Function to show a specific slide
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                
-                slides[index].classList.add('active');
-                indicators[index].classList.add('active');
-                currentIndex = index;
-            }
-            
-            // Previous slide
-            prevButton.addEventListener('click', function() {
-                resetAutoplay();
-                let prevIndex = currentIndex - 1;
-                if (prevIndex < 0) prevIndex = slides.length - 1;
-                showSlide(prevIndex);
-            });
-            
-            // Next slide
-            nextButton.addEventListener('click', function() {
-                resetAutoplay();
-                let nextIndex = currentIndex + 1;
-                if (nextIndex >= slides.length) nextIndex = 0;
-                showSlide(nextIndex);
-            });
-            
-            // Indicator clicks
-            indicators.forEach(indicator => {
-                indicator.addEventListener('click', function() {
-                    resetAutoplay();
-                    const index = parseInt(this.dataset.index);
-                    showSlide(index);
-                });
-            });
-            
-            // Auto play
-            function startAutoplay() {
-                interval = setInterval(function() {
-                    let nextIndex = currentIndex + 1;
-                    if (nextIndex >= slides.length) nextIndex = 0;
-                    showSlide(nextIndex);
-                }, 5000); // Change slide every 5 seconds
-            }
-            
-            function resetAutoplay() {
-                clearInterval(interval);
-                startAutoplay();
-            }
-            
-            // Start autoplay
-            startAutoplay();
-        });
-   
+       
     </script>
 </body>
 </html>
