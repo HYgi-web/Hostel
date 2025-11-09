@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIISER Feedback Form</title>
+    <title>Hostel Rules & Regulations</title>
     <style>
         * {
             margin: 0;
@@ -12,576 +12,587 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            color: #1a1a1a;
-            min-height: 100vh;
-            position: relative;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
             overflow-x: hidden;
         }
 
-        /* Animated background elements */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(33, 150, 242, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(33, 150, 242, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(33, 150, 242, 0.05) 0%, transparent 50%);
-            z-index: -1;
-            animation: backgroundShift 20s ease-in-out infinite;
+         /* Header Styles */
+         .header {
+            background: linear-gradient(135deg, #3b82c4 0%, #2563aa 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes backgroundShift {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-10px) translateY(-10px); }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82c4;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: #3b82c4;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Navigation Styles */
+        .nav {
+            background: rgba(74, 144, 226, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 26px;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffffff, #e8f4fd);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-item:hover::before, .nav-item.active::before {
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.15);
+            font-weight: 600;
         }
 
         .container {
-            max-width: 900px;
-            padding: 3rem 2rem 5rem;
-            width: 100%;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .container h1 {
-            margin-bottom: 1rem;
-            color: #2196f2;
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #2196f2, #1976d2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: titleGlow 3s ease-in-out infinite alternate;
-            text-shadow: 0 0 30px rgba(33, 150, 242, 0.3);
-        }
-
-        @keyframes titleGlow {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.1); }
-        }
-
-        .container p {
-            margin-bottom: 2.5rem;
-            color: #64748b;
-            text-align: center;
-            font-size: 1.1rem;
-            animation: slideUp 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .complain-feedback {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.2);
-            animation: formSlideIn 1s ease-out 0.4s both;
-            border: 1px solid rgba(33, 150, 242, 0.1);
-        }
-
-        @keyframes formSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            animation: fieldFadeIn 0.6s ease-out both;
-            animation-delay: calc(var(--animation-order) * 0.1s);
-        }
-
-        @keyframes fieldFadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .heading {
-            margin-bottom: 0.6rem;
-            color: #334155;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .complain-input, .complain-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: inherit;
-            position: relative;
-        }
-
-        .complain-input:focus, .complain-textarea:focus {
-            outline: none;
-            border-color: #2196f2;
-            background: rgba(255, 255, 255, 1);
-            box-shadow: 
-                0 0 0 3px rgba(33, 150, 242, 0.1),
-                0 4px 12px rgba(33, 150, 242, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .complain-input:hover, .complain-textarea:hover {
-            border-color: #94a3b8;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .complain-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        .hostel-select{
-            width: 100%;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            font-size: 0.95rem;
-
-        }
-        .file-drop-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 2px dashed #cbd5e1;
-            cursor: pointer;
-            text-align: center;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            height: 150px;
-            width: 100%;
-            max-width: 300px;
+            max-width: 1200px;
             margin: 0 auto;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
-        .file-drop-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(33, 150, 242, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .file-drop-box:hover {
-            background: linear-gradient(135deg, #e8f0ff, #dbeafe);
-            border-color: #2196f3;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(33, 150, 242, 0.15);
-        }
-
-        .file-drop-box:hover::before {
-            left: 100%;
-        }
-
-        .file-drop-box.dragover {
-            border-color: #2196f3;
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            transform: scale(1.02);
-        }
-
-        .file-drop-box input[type="file"] {
-            display: none;
-        }
-
-        .upload-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 0.5rem;
-            transition: transform 0.3s ease;
-            filter: opacity(0.7);
-        }
-
-        .file-drop-box:hover .upload-icon {
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .upload-text {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .file-name {
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            color: #2196f3;
-            font-weight: 600;
-        }
-
-        .complain-submit-button {
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #2196f3, #1976d2);
-            font-size: 1rem;
+        .headerr {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border: none;
-            cursor: pointer;
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 2rem auto 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(33, 150, 242, 0.3);
+            padding: 40px 30px;
+            text-align: center;
         }
 
-        .complain-submit-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        .headerr h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .complain-submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(33, 150, 242, 0.4);
-            background: linear-gradient(135deg, #1976d2, #1565c0);
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
         }
 
-        .complain-submit-button:hover::before {
-            left: 100%;
+        .content {
+            padding: 40px 30px;
         }
 
-        .complain-submit-button:active {
-            transform: translateY(-1px);
+        .intro {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 30px;
+            border-radius: 5px;
         }
 
-        .complain-submit-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
+        .intro p {
+            font-size: 1.05em;
+            color: #555;
         }
 
-        /* Progress bar for form completion */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2196f3, #1976d2);
-            transition: width 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 0 10px rgba(33, 150, 242, 0.5);
+        .rule-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1rem 3rem;
-            }
-            
-            .container h1 {
-                font-size: 2.5rem;
-            }
-            
-            .complain-feedback {
-                padding: 1.5rem;
-                border-radius: 16px;
-            }
-            
-            .file-drop-box {
-                max-width: 100%;
-                height: 120px;
-            }
+        .rule-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Success animation */
-        @keyframes successPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .success-feedback {
-            animation: successPulse 0.6s ease-in-out;
-        }
-
-        /* Loading spinner */
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ffffff;
-            border-top: 2px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .rule-number {
             display: inline-block;
-            margin-right: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 0.9em;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .rule-content {
+            display: inline-block;
+            width: calc(100% - 55px);
+            vertical-align: top;
+            padding-top: 5px;
+        }
+
+        .rule-content strong {
+            color: #667eea;
+        }
+
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .strict {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .rule-number {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 0.85em;
+            }
+
+            .rule-content {
+                width: calc(100% - 45px);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    
+     <!-- Header -->
+     <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="DTU Logo" width="70px">
+                <div class="logo-text">
+                    <h1>Hostel Office</h1>
+                    <p>DELHI TECHNOLOGICAL UNIVERSITY</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="fee.html" class="nav-item">Fee Structure</a>
+            <a href="index.html#hostels" class="nav-item">Boys Hostels</a>
+            <a href="index.html#hostels" class="nav-item">Girls Hostels</a>
+            <a href="complain.html" class="nav-item active">Rules & Regulations</a>
+            <a href="index.html#search-section" class="nav-item">Important Updates</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>Complaints & Grievances</h1>
-        <p>Register your complain with the Hostel Management Department</p>
-        
-        <form id="complains" class="complain-feedback">
-            <div class="form-group" style="--animation-order: 1">
-                <h4 class="heading">Enter your Name*</h4>
-                <input type="text" name="name" placeholder="Your Full Name" class="complain-input" required>
+        <div class="headerr">
+            <h1>🏠 Hostel Rules & Regulations</h1>
+            <p>Guidelines for a Safe, Disciplined, and Harmonious Campus Life</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <p>All hostel residents are required to strictly adhere to the following rules and regulations. Violations will be treated seriously and may result in disciplinary action, fines, or expulsion from the hostel. The Chief Warden is the final authority in all matters related to hostel discipline, admission, and functioning.</p>
             </div>
 
-            <div class="form-group" style="--animation-order: 2">
-                <h4 class="heading">Enter your Roll Number*</h4>
-                <input type="text" name="roll" placeholder="Roll Number" class="complain-input" required>
+            <div class="rule-section ">
+                <span class="rule-number">1</span>
+                <div class="rule-content">
+                    <strong>Motorized Vehicles:</strong> No hostel resident can keep any motorized vehicle in the University. However, bicycles are permitted for local transport. Disciplinary action, including fine, will be imposed on defaulters.
+                </div>
             </div>
 
-            <div class="form-group" style="--animation-order: 3">
-                <h4 class="heading">Enter your E-mail ID*</h4>
-                <input type="email" name="email" placeholder="Email Address" class="complain-input" required>
+            <div class="rule-section ">
+                <span class="rule-number">2</span>
+                <div class="rule-content">
+                    <strong>Anti-Ragging Policy:</strong> Ragging is strictly prohibited inside as well as outside the Hostels/Campus. Cases will be handled as per Hon'ble Supreme Court orders. Freshers should promptly report to the Warden, Officer-in-charge, Chief Warden, or any competent authority if ragged.
+                </div>
             </div>
 
-            <div class="form-group" style="--animation-order: 4">
-                <h4 class="heading">Enter your Mobile Number</h4>
-                <input type="tel" name="mobile" placeholder="Mobile Number" class="complain-input">
+            <div class="rule-section ">
+                <span class="rule-number">3</span>
+                <div class="rule-content">
+                    <strong>Violence & Damage:</strong> Any act of intimidation, violence, willful damage to property, or drunken and riotous behavior constitutes an offence. Offenders will be expelled from hostel without notice and face disciplinary action.
+                </div>
             </div>
 
-            <div class="form-group" style="--animation-order: 5">
-                <h4 class="heading">Hostel</h4>
-                <select class="hostel-select" id="hostelSelect">
-                    <option value="">Select Hostel</option>
-                    <option value="h1">Sister Nivediata Hostel</option>
-                    <option value="h2">Kalpana Chawla Hostel</option>
-                    <option value="h3">Virangana Lakshmibai Hostel, Block-1</option>
-                    <option value="h4">Virangana Lakshmibai Hostel, Block-2</option>
-                    <option value="h5">Type — II Hostel</option>
-                    <option value="h6">Aryabhatt Hostel</option>
-                    <option value="h7">Bhaskaracharya Hostel</option>
-                    <option value="h8">Sir C. V. Raman Hostel</option>
-                    <option value="h9">Sir J.C. Bose Hostel</option>
-                    <option value="h10">Varahmihir Hostel</option>
-                    <option value="h11">Sir Vishveshwarya Hostel</option>
-                    <option value="h12">Homi Jehangir Bhabha Hostel</option>
-                    <option value="h13">Ramanujan Hostel</option>
-                    <option value="h14">Dr. APJ Abdul Kalam Hostel</option>
-                    
-                </select>
+            <div class="rule-section ">
+                <span class="rule-number">4</span>
+                <div class="rule-content">
+                    <strong>Narcotics & Alcohol:</strong> Use of narcotics, consumption of alcoholic beverages, and gambling are strictly prohibited. Disciplinary action shall be taken against violators.
+                </div>
             </div>
 
-            <div class="form-group" style="--animation-order: 6">
-                <h4 class="heading">Room Number</h4>
-                <input type="text" name="room" placeholder="Room Number" class="complain-input">
+            <div class="rule-section ">
+                <span class="rule-number">5</span>
+                <div class="rule-content">
+                    <strong>Smoking Ban:</strong> Smoking is strictly prohibited inside hostel/University campus. Students found smoking or in possession of smoking items shall be penalized for indiscipline and causing a possible fire hazard.
+                </div>
             </div>
 
-            <div class="form-group" style="--animation-order: 7">
-                <h4 class="heading">Subject*</h4>
-                <textarea name="Subject" placeholder="Mention the subject of your complain" class="complain-textarea" rows="4" required></textarea>
-            </div>
-            <div class="form-group" style="--animation-order: 8">
-                <h4 class="heading">Register Your Compalain*</h4>
-                <textarea name="description" placeholder="Describe your problem in detail..." class="complain-textarea" rows="4" required></textarea>
+            <div class="rule-section ">
+                <span class="rule-number">6</span>
+                <div class="rule-content">
+                    <strong>Videography:</strong> Videography is prohibited inside hostel premises. Students found indulging in such activity will face necessary disciplinary action.
+                </div>
             </div>
 
-            <div class="form-group" style="--animation-order: 9">
-                <h4 class="heading">Upload image to support your review</h4>
-                <label for="fileUpload" class="file-drop-box">
-                    <img src="https://cdn-icons-png.flaticon.com/512/724/724933.png" alt="Upload Icon" class="upload-icon">
-                    <div class="upload-text">Click to upload or drag and drop</div>
-                    <div class="upload-text" style="font-size: 0.8rem; margin-top: 0.25rem;">PNG, JPG, GIF up to 10MB</div>
-                    <input type="file" id="fileUpload" name="file" accept="image/*" class="complain-file-input">
-                    <div class="file-name" id="fileName"></div>
-                </label>
+            <div class="rule-section ">
+                <span class="rule-number">7</span>
+                <div class="rule-content">
+                    <strong>Staff Relations:</strong> Misbehavior or indulging in altercation with staff members/security staff will be treated as an offence and is liable for expulsion from the hostel.
+                </div>
             </div>
 
-            <button type="submit" class="complain-submit-button" id="submitBtn">
-                Submit Feedback
-            </button>
-        </form>
+            <div class="rule-section">
+                <span class="rule-number">8</span>
+                <div class="rule-content">
+                    <strong>Leave Procedures:</strong> Hostel inmates shall enter their names in the register before leaving campus and seek written permission from their hostel Wardens before long leave.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">9</span>
+                <div class="rule-content">
+                    <strong>Boys Hostel Curfew:</strong> Boys hostel inmates shall not be allowed to leave/enter the hostel after <span class="highlight">11:00 PM</span>. Late reporting will result in disciplinary action.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">10</span>
+                <div class="rule-content">
+                    <strong>Daily Attendance:</strong> All hostellers must sign daily attendance in the register available with Hostel Attendants. <span class="highlight">Failing to sign for 7 consecutive days</span> without permission will result in accommodation cancellation without notice.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">11</span>
+                <div class="rule-content">
+                    <strong>Girls Hostel Curfew:</strong> All girl hostellers must be back in campus by <span class="highlight">9:00 PM</span> and in their hostel by <span class="highlight">11:00 PM</span>. Disciplinary action will be taken against defaulters.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">12</span>
+                <div class="rule-content">
+                    <strong>Boys Hostel Visitors:</strong> No female member is permitted to visit boys' hostel rooms. Visitors may see their wards in the visitors' room only.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">13</span>
+                <div class="rule-content">
+                    <strong>Girls Hostel Visitors:</strong> No male member is permitted to visit girls' hostel. With warden's permission, visitors may see their wards in the visitors' room only.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">14</span>
+                <div class="rule-content">
+                    <strong>Day Scholars:</strong> No day-scholar or other person is permitted to stay in the hostel after <span class="highlight">9:00 PM</span>. Permission from the warden is required for meetings.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">15</span>
+                <div class="rule-content">
+                    <strong>Guest Stay Policy:</strong> Day scholars must seek prior permission from Chief Warden/Officer-in-charge through their warden. Guest charges: <span class="highlight">Rs. 300/day (Non-AC)</span>, <span class="highlight">Rs. 500/day (AC)</span>. Maximum stay: 5 days.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">16</span>
+                <div class="rule-content">
+                    <strong>Unauthorized Guests:</strong> Entertaining or providing accommodation to any unauthorized person is punishable and will result in expulsion from the hostel.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">17</span>
+                <div class="rule-content">
+                    <strong>Time Violations:</strong> Non-adherence to time norms (points 8 and 10) is grave misconduct and may result in expulsion. The Warden Council's decision is final and binding.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">18</span>
+                <div class="rule-content">
+                    <strong>Outsider Restrictions:</strong> Outsiders are not allowed in girls'/boys' hostels.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">19</span>
+                <div class="rule-content">
+                    <strong>Personal Belongings:</strong> Hostel inmates should take care of their belongings. The University is not responsible for losses. Jewelry, costly watches, and mobile phones must not be left unattended.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">20</span>
+                <div class="rule-content">
+                    <strong>Desert Cooler:</strong> Prior permission required from warden. Charges: <span class="highlight">Rs. 1,000/year</span>. Fines apply beyond the deadline.
+                </div>
+            </div>
+
+            <div class="rule-section strict">
+                <span class="rule-number">21</span>
+                <div class="rule-content">
+                    <strong>Vulgar Content:</strong> Display of vulgar posters/calendars is strictly prohibited. Non-compliance leads to disciplinary action.
+                </div>
+            </div>
+
+            <div class="rule-section strict">
+                <span class="rule-number">22</span>
+                <div class="rule-content">
+                    <strong>Cooking & Inflammables:</strong> Cooking and keeping inflammable items inside hostel is strictly prohibited and will be penalized as fire hazard.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">23</span>
+                <div class="rule-content">
+                    <strong>Electrical Appliances:</strong> Electric iron and kettle permitted with prior permission. Charges: <span class="highlight">Rs. 100/month per item</span>. Room heaters and other appliances not permitted.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">24</span>
+                <div class="rule-content">
+                    <strong>False Fire Alarms:</strong> Triggering false fire alarms is serious indiscipline and shall be penalized.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">25</span>
+                <div class="rule-content">
+                    <strong>Minimum Attendance:</strong> Minimum stay duration: <span class="highlight">85%</span>. Reviewed monthly/semester/yearly. Short attendance or frequent absence leads to allotment cancellation.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">26</span>
+                <div class="rule-content">
+                    <strong>Lost ID Card:</strong> Fine of <span class="highlight">Rs. 200</span> and FIR copy required for duplicate hostel identity card.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">27</span>
+                <div class="rule-content">
+                    <strong>Emergency Contact:</strong> In emergencies, contact the concerned Hostel Warden/Officer In-Charge/Chief Warden.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">28</span>
+                <div class="rule-content">
+                    <strong>Notice Boards:</strong> Check notice boards regularly for announcements. Suggestions to improve hostel environment are welcome.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">29</span>
+                <div class="rule-content">
+                    <strong>Restricted Areas:</strong> No access to terrace/AHU room under any circumstances. Using fire exit for sitting strictly prohibited. Violations invite disciplinary action including expulsion.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">30</span>
+                <div class="rule-content">
+                    <strong>Warden Authority:</strong> Wardens may impose fines for any indiscipline as deemed appropriate.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">31</span>
+                <div class="rule-content">
+                    <strong>Contact Updates:</strong> Keep Warden Office informed about changes in contact number/email ID/Hostel ID.
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <span class="rule-number">32</span>
+                <div class="rule-content">
+                    <strong>Authentic Details:</strong> Students must provide authentic details of self, parents, and local guardians for hostel records.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">33</span>
+                <div class="rule-content">
+                    <strong>Chief Warden Authority:</strong> The Chief Warden is the final authority in matters of discipline, admission, and overall hostel functioning.
+                </div>
+            </div>
+
+            <div class="rule-section ">
+                <span class="rule-number">34</span>
+                <div class="rule-content">
+                    <strong>Compliance:</strong> All hostel residents shall abide by the above rules. Violations will be viewed seriously. Hostel Wardens are fully empowered to deal with residents as situations demand.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>⚠️ Disclaimer</strong></p>
+            <p>These rules are designed to ensure a safe, disciplined, and conducive environment for all residents.</p>
+            <p>Strict compliance is mandatory. Non-compliance may result in disciplinary action, fines, or expulsion.</p>
+            <p style="margin-top: 15px; opacity: 0.8;">For queries, contact your respective Hostel Warden or the Chief Warden's Office.</p>
+        </div>
     </div>
-
-    <script>
-     
-            // Utility: Convert file to Base64
-            function toBase64(file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = error => reject(error);
-                });
-            }
-        
-            // Progress bar
-            function updateProgress() {
-                const form = document.getElementById('complains');
-                const requiredInputs = form.querySelectorAll('input[required], textarea[required]');
-                const filled = Array.from(requiredInputs).filter(input => input.value.trim() !== '');
-                const progress = (filled.length / requiredInputs.length) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-            }
-        
-            // File upload handling
-            const fileUpload = document.getElementById('fileUpload');
-            const fileDropBox = document.querySelector('.file-drop-box');
-            const fileName = document.getElementById('fileName');
-        
-            fileUpload.addEventListener('change', function(e) {
-                if (e.target.files.length > 0) {
-                    fileName.textContent = e.target.files[0].name;
-                    fileDropBox.style.borderColor = '#2196f3';
-                    fileDropBox.style.background = 'linear-gradient(135deg, #e8f0ff, #dbeafe)';
-                }
-            });
-        
-            fileDropBox.addEventListener('dragover', e => {
-                e.preventDefault();
-                fileDropBox.classList.add('dragover');
-            });
-        
-            fileDropBox.addEventListener('dragleave', e => {
-                e.preventDefault();
-                fileDropBox.classList.remove('dragover');
-            });
-        
-            fileDropBox.addEventListener('drop', e => {
-                e.preventDefault();
-                fileDropBox.classList.remove('dragover');
-                const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    fileUpload.files = files;
-                    fileName.textContent = files[0].name;
-                    fileDropBox.style.borderColor = '#2196f3';
-                    fileDropBox.style.background = 'linear-gradient(135deg, #e8f0ff, #dbeafe)';
-                }
-            });
-        
-            // Input focus effects
-            document.querySelectorAll('.complain-input, .complain-textarea').forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.parentElement.querySelector('.heading').style.color = '#2196f3';
-                });
-                input.addEventListener('blur', function() {
-                    this.parentElement.querySelector('.heading').style.color = '#334155';
-                });
-                input.addEventListener('input', updateProgress);
-            });
-        
-            // Form submission
-            document.getElementById('complains').addEventListener('submit', async function (e) {
-                e.preventDefault();
-        
-                const form = e.target;
-                const submitBtn = document.getElementById('submitBtn');
-                const fileInput = document.getElementById('fileUpload');
-                const file = fileInput.files[0];
-        
-                submitBtn.innerHTML = '<span class="spinner"></span>Submitting...';
-                submitBtn.disabled = true;
-        
-                // Gather form data
-                const formData = new FormData();
-                formData.append("name", form.name.value.trim());
-                formData.append("roll", form.roll.value.trim());
-                formData.append("email", form.email.value.trim());
-                formData.append("mobile", form.mobile.value.trim());
-                formData.append("hostel", form.hostelSelect.value);
-                formData.append("room", form.room.value.trim());
-                formData.append("subject", form.Subject.value.trim());
-                formData.append("description", form.description.value.trim());
-        
-                if (file) {
-                    const base64 = await toBase64(file);
-                    formData.append("filedata", base64.split(',')[1]);
-                    formData.append("filename", file.name);
-                    formData.append("mimeType", file.type);
-                } else {
-                    formData.append("filedata", "");
-                    formData.append("filename", "");
-                    formData.append("mimeType", "");
-                }
-        
-                // Send to Google Apps Script
-                fetch("#", {
-                    method: "POST",
-                    body: formData
-                })
-                .then(res => res.text())
-                .then(data => {
-                    if (data.includes("Success")) {
-                        submitBtn.innerHTML = "✓ Submitted Successfully!";
-                        submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                        form.reset();
-                        fileName.textContent = '';
-                        fileDropBox.style.borderColor = '#cbd5e1';
-                        fileDropBox.style.background = 'linear-gradient(135deg, #f8fafc, #f1f5f9)';
-                        updateProgress();
-                    } else {
-                        alert("Submission failed. Please try again.");
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Error occurred. Please try again.");
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    setTimeout(() => {
-                        submitBtn.innerHTML = 'Submit Feedback';
-                        submitBtn.style.background = 'linear-gradient(135deg, #2196f3, #1976d2)';
-                    }, 2000);
-                });
-            });
-        
-            // Initialize progress bar
-            updateProgress();
-        </script>
-        
-        
-    
 </body>
 </html>
