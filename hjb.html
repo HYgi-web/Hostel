@@ -658,14 +658,52 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    /* Header */
     .header-content {
         flex-direction: column;
-        gap: 15px;
+        gap: 1rem;
+        text-align: center;
+        padding: 0 1rem;
     }
-
-    .nav-content {
+    
+    .logo {
         flex-direction: column;
+        gap: 0.5rem;
     }
+    
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .logo-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .logo-text p {
+        font-size: 0.8rem;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .social-links a {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Navigation */
+    .nav-content {
+        justify-content: center;
+    }
+    
+    .nav-item {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
 
     .hero h1 {
         font-size: 36px;
@@ -688,7 +726,6 @@ body {
         grid-template-columns: 1fr;
     }
 }
-
 /* Footer */
 .footer {
     background-color: #333;
